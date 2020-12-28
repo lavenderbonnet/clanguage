@@ -4,7 +4,7 @@
 
 #define TRUE 1
 
-
+// test github checkin
 //Only include white spaces (' ', '/t', '/n')
 
 int whiteSpaces(FILE *fp)
