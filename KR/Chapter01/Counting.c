@@ -4,6 +4,9 @@
 
 #define TRUE 1
 
+#define IN 1
+#define OUT 0
+
 long charCount(FILE *fp)
 {
     long nc;
@@ -43,7 +46,7 @@ long lineCount(FILE *fp)
     return lc;
 }
 
-long wordCount(FILE *fp)
+/*long wordCount(FILE *fp)
 {
     long wc;
     int c;
@@ -58,7 +61,42 @@ long wordCount(FILE *fp)
     }
 
     return wc;
+}*/
+
+long countWords(FILE *fp)
+{
+    long wc;
+    int c;
+
+    int state = OUT;
+    wc = 0;
+
+    while(TRUE)
+    {
+        c = fgetc(fp);
+        if(c==EOF) break;
+
+        //if(c == '\n') wc++;
+
+        if( c == ' ' || c == '\n' || c == '\t' ) 
+        {
+            state = OUT;
+        }
+        else if (state == OUT)
+        {
+            if( 'a' <= c && c <= 'z' || 'A' <= c && c <= 'Z' || '0' <= c && c <= '9' )
+            {
+                state = IN;
+                ++wc;
+            }
+        }
+    }
+    return wc;
 }
+
+
+
+
 
 main(int argc, char **argv)
 {
@@ -69,7 +107,8 @@ main(int argc, char **argv)
     fseek(fp, 0, SEEK_SET);
     long lc = lineCount(fp);
     fseek(fp, 0, SEEK_SET);
-    long wc = wordCount(fp);
+    // long wc = wordCount(fp);
+    long wc = countWords(fp);
 
     fclose(fp);
     printf("Chars in file: %d\n", nc);
