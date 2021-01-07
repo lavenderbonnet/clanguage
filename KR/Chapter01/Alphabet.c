@@ -30,6 +30,7 @@ void Print2z()
     printf("Please enter a lower case letter from the alphabet.\n\n");
 
     c = getchar();
+    c = c + 1;
     while(c != '{')
     {
         putchar(c);

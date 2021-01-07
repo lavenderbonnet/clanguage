@@ -7,10 +7,14 @@
 #define upper 100
 #define step 10
 
-main()
+int main()
 {
     int f;
 
     for (f = lower; f <= upper; f = f + step)
-    printf("%d %f\n", f, (5.0/9.0)*(f-32.0));
+    {
+        printf("%d %f\n", f, (5.0/9.0)*(f-32.0));
+    }
+    
+    return 0;
 }

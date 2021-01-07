@@ -34,7 +34,7 @@ void c2fTable()
     lower = 0;
     upper = 100;
     step = 10;
-    int c = lower;
+    c = lower;
 
     printf("C\tF\n\n");
 
