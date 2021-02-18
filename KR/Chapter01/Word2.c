@@ -1,7 +1,7 @@
 // Lilac Walia | Jan 6, 2020
 // Count # of words in a file
 
-// Needs a lot of work.
+// Needs a lot of work
 
 #include <stdio.h>
 
@@ -10,15 +10,12 @@
 
 int WordCount(FILE *fp)
 {
-    int wc;
-    int c;
-
-    int wc = OUT;
-    wc = 0;
+    long wc = 0;
+    int c = 0;
 
     while(OUT)
     {
-        c = fgetc(*fp);
+        c = fgetc(fp);
         if(c==EOF) break;
 
 
@@ -37,4 +34,17 @@ int WordCount(FILE *fp)
         }
     }
     return wc;
+}
+
+
+main(int argc, char **argv)
+{
+    FILE *fp = NULL;
+    fp = fopen(argv[1], "r");
+    
+    long wc = WordCount(fp);
+
+    fclose(fp);
+
+    printf("Words in file: %d\n", wc);
 }
