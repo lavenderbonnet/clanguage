@@ -5,10 +5,10 @@
 
 #include <stdio.h>
 
-#define IN 1
-#define OUT 0
+#define IN 1    // Means it's "inside" a word
+#define OUT 0   // Means it's "outside" a word
 
-int WordCount(FILE *fp)
+int WordCount(FILE *fp) //the FILE *fp is supposed to mean the file you gave the program
 {
     long wc = 0;
     int c = 0;
